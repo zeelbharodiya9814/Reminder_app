@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 
 
-class Reminder extends StatefulWidget {
-  const Reminder({Key? key}) : super(key: key);
+class Profile extends StatefulWidget {
+  const Profile({Key? key}) : super(key: key);
 
   @override
-  State<Reminder> createState() => _ReminderState();
+  State<Profile> createState() => _ProfileState();
 }
 
-class _ReminderState extends State<Reminder> {
+class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple[600],
+      body: Container(
+        child: Center(
+          child: Text("No Data Available...",style: TextStyle(fontSize: 20),),
+        ),
+      ),
     );
   }
 }

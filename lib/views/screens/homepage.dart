@@ -4,6 +4,9 @@ import 'package:pr_reminder_app/views/screens/add_reminder_page.dart';
 import 'package:pr_reminder_app/views/screens/profile_page.dart';
 import 'package:pr_reminder_app/views/screens/reminderpage.dart';
 
+import '../../controller/theme_controller.dart';
+import 'global.dart';
+
 
 
 class HomePage extends StatefulWidget {
@@ -17,13 +20,13 @@ class _HomePageState extends State<HomePage> {
 
   final _pageController = PageController(initialPage: 2);
 
-  int maxCount = 5;
+  int maxCount = 3;
 
 
   final List<Widget> bottomBarPages = [
-     Reminder(),
-     addReminder(),
-     Profile(),
+    Profile(),
+   addReminder(),
+    ReminderPage(),
   ];
 
   @override
@@ -39,22 +42,17 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: (bottomBarPages.length <= maxCount)
           ? AnimatedNotchBottomBar(
         pageController: _pageController,
-        color: Colors.white,
+        color: (GLOBAL.bootom = true) ? Colors.white : Colors.black,
         showLabel: false,
         notchColor: Colors.white,
         showShadow: true,
         bottomBarItems: [
-          const BottomBarItem(
-            inActiveItem: Icon(
-              Icons.home_outlined,
-              color: Colors.blue,size: 30,
-            ),
-            activeItem: Icon(
-              Icons.home_outlined,
-              color: Colors.green,
-            ),
-            itemLabel: 'Page 1',
+          BottomBarItem(
+            inActiveItem: Icon(Icons.person_outline,color: Colors.blue,size: 30,),
+            activeItem: Icon(Icons.person_outline,color: Colors.green,),
+            itemLabel: 'Page 3',
           ),
+
           const BottomBarItem(
             inActiveItem: Icon(
               Icons.add,
@@ -68,10 +66,16 @@ class _HomePageState extends State<HomePage> {
           ),
 
           ///svg example
-          BottomBarItem(
-            inActiveItem: Icon(Icons.person_outline,color: Colors.blue,size: 30,),
-            activeItem: Icon(Icons.person_outline,color: Colors.green,),
-            itemLabel: 'Page 3',
+          const BottomBarItem(
+            inActiveItem: Icon(
+              Icons.home_outlined,
+              color: Colors.blue,size: 30,
+            ),
+            activeItem: Icon(
+              Icons.home_outlined,
+              color: Colors.green,
+            ),
+            itemLabel: 'Page 1',
           ),
         ],
         onTap: (index) {
